@@ -22,9 +22,10 @@ const OverlayOne = () => (
   )
 export const Login = () => {
    
- 
-   const loginSuccess= useSelector((state)=>state.LoginReducer.token)
+ const token= useSelector((state)=>state.LoginReducer.token)
+   const loginSuccess= useSelector((state)=>state.LoginReducer.loginSuccess)
    const loginRequest= useSelector ((state)=>state.LoginReducer.loginRequest)
+    const LoginError= useSelector((state)=>state.LoginReducer.error)
    const dispatch= useDispatch()
    const [error,setError]=useState("")
    const [overlay, setOverlay] = React.useState(<OverlayOne />)
@@ -37,6 +38,19 @@ export const Login = () => {
        onClose: onCloseErrorModal 
    } = useDisclosure()
 
+
+   const { 
+    isOpen: isOpenLoginErrorModal, 
+    onOpen: onOpenLoginErrorModal, 
+    onClose: onCloseLoginErrorModal 
+} = useDisclosure()
+
+useEffect(()=>{
+    if(LoginError){
+        setOverlay(<OverlayOne />);
+        onOpenLoginErrorModal()
+    }
+},[LoginError])
    useEffect(()=>{
     dispatch(resetRegister())
    },[])
@@ -44,6 +58,7 @@ export const Login = () => {
    useEffect(()=>{
        onToggle()
  },[])
+ 
  const handleChange=(e)=>{
    const {name, value} =e.target
     
@@ -73,7 +88,7 @@ export const Login = () => {
    }
  }
 
-if(loginSuccess){
+if(token){
   
    return <Navigate to="/"/>
 }
@@ -114,6 +129,20 @@ if(loginSuccess){
          </ModalBody>
          <ModalFooter>
            <Button onClick={onCloseErrorModal}>Close</Button>
+         </ModalFooter>
+       </ModalContent>
+     </Modal>
+
+     <Modal textAlign="center" isCentered isOpen={isOpenLoginErrorModal} onClose={onCloseLoginErrorModal}>
+       {overlay}
+       <ModalContent>
+         <ModalHeader textAlign="center">Please enter valid credentials</ModalHeader>
+        
+         <ModalBody textAlign="center">
+           <Text>{LoginError}</Text>
+         </ModalBody>
+         <ModalFooter>
+           <Button onClick={onCloseLoginErrorModal}>Close</Button>
          </ModalFooter>
        </ModalContent>
      </Modal>

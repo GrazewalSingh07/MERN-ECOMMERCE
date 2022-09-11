@@ -13,9 +13,10 @@ const loginSucess=(payload)=>{
         payload
     }
 }
-const loginFailure=()=>{
+const loginFailure=(payload)=>{
     return  {
-        type:types.LOGIN_FAILURE
+        type:types.LOGIN_FAILURE,
+        payload
     }
 }
 export const LOGOUT=()=>{
@@ -27,13 +28,17 @@ export const login=(data)=>(dispatch)=>{
     dispatch(loginRequest())
     try {
         axios.post("http://localhost:4000/login",data).then((res)=>{
-            console.log(res)
+            
             saveData(res.data.token,"token")
             saveData(res.data.user,"user")
             dispatch(loginSucess(res.data.token))
+        }).catch((err)=>{
+             
+            dispatch(loginFailure(err.response.data))
         })
     } catch (error) {
-        console.log(error.message)
-        dispatch(loginFailure)
+        // console.log(error.message)
+
+        // dispatch(loginFailure)
     }
 }

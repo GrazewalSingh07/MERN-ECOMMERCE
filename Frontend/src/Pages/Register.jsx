@@ -41,13 +41,17 @@ const OverlayOne = () => (
   />
 );
 export const Register = () => {
+
   const RegisterSuccess = useSelector(
     (state) => state.RegisterReducer.registerSuccess
   );
+
   const RegisterRequest = useSelector(
     (state) => state.RegisterReducer.registerRequest
   );
+
   const dispatch = useDispatch();
+
   const [error, setError] = useState("Invalid credentials");
   const [overlay, setOverlay] = React.useState(<OverlayOne />);
   const [data, setData] = useState({});
@@ -62,6 +66,7 @@ export const Register = () => {
   useEffect(() => {
     onToggle();
   }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -101,6 +106,7 @@ export const Register = () => {
       setError("Please choose your role");
       setOverlay(<OverlayOne />);
       onOpenErrorModal();
+      
     } else {
       dispatch(register(data));
     }

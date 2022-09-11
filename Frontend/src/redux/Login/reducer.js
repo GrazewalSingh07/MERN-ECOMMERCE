@@ -5,7 +5,8 @@ const initState={
     loginSuccess:false,
     loginFailure:false,
     loginRequest:false,
-    token:loadData("token")||""
+    token:loadData("token")||"",
+    error:""
 }
 
 export const reducer=(state=initState,{type,payload})=>{
@@ -29,7 +30,8 @@ export const reducer=(state=initState,{type,payload})=>{
                 ...state,
                 loginRequest:false,
                 loginSuccess:false,
-                loginFailure:true
+                loginFailure:true,
+                error:payload
             }
         }
         case("LOGOUT"):{
