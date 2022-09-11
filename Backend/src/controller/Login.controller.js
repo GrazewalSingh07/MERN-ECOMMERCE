@@ -1,12 +1,10 @@
 const express= require("express");
-const User = require("../models/user.model");
+const User = require("../model/user.model");
  const router= express.Router();
 const {body,validationResult}=require("express-validator")
 const jwt = require('jsonwebtoken');
 require("dotenv").config()
- const authenticate= require("../middlewares/authenticate");
-const Follow = require("../models/Follow.model");
-const Post = require("../models/post.model");
+ 
 
 const newToken=(user)=>{
     return jwt.sign({user},process.env.SECRET_KEY)

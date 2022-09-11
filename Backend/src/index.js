@@ -14,7 +14,10 @@ app.use(cors())
 
 
 const Register= require("./controller/Register.conteoller")
+const Products= require("./controller/Product.controller")
+const login= require("./controller/Login.controller")
+app.use("/products",Products)
 
 app.use("/register", Register)
-
+app.use("/login", login)
 module.exports= app

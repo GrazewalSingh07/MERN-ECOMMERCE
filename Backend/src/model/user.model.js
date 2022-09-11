@@ -6,9 +6,9 @@ const userSchema=new mongoose.Schema({
     password:{type:String, required:true},
     fullname:{type:String, required:true},
     phone:{type:Number, required:false},
-    role:{type:String,required:true}
-    // avatar:{type:String, required:true},
-    // cloudinary_Id:{type:String, required:true}
+    role:{type:String,required:true},
+    // avatar:{type:String, required:false},
+    // cloudinary_Id:{type:String, required:false}
    
 
 },{

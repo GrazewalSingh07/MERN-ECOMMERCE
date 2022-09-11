@@ -9,6 +9,7 @@ const ProductSchema= new mongoose.Schema({
     discountPercentage:{type:Number,required:true},
     rating:{type:Number,required:true},
     brand:{type:String,required:true},
+    category:{type:String,required:true},
     thumbnail:{type:String,required:true},
     images:[{type:String,required:true}]
 })
