@@ -4,16 +4,17 @@ import { useEffect } from 'react'
 import { GoSearch } from 'react-icons/go'
 
 export const Search = () => {
-    const [search,setSearch]=useState()
+    const [search,setSearch]=useState("")
 useEffect(()=>{
-    
+     
 },[Search])
+
   return (
     <InputGroup>
     <InputLeftElement children={<GoSearch/>}/>
         <Input onChange={(e)=>{
             setSearch(e.target.value)
-        }}  borderRadius="none"  placeholder='Search by brand, category or title'/>
+        }}  borderRadius="none" placeholder='Search by brand, category or title'/>
     </InputGroup>
   )
 }

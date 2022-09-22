@@ -116,7 +116,7 @@ export const Register = () => {
     return <Navigate to="/login" />;
   }
   return (
-    <Container pt="5rem" textAlign="center" margin="auto" maxW="container.md">
+    <Container zIndex={-1}  pt="5rem" textAlign="center" margin="auto" maxW="container.md">
       <Stack p="2rem">
         <Container>
           {" "}

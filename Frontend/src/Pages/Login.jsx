@@ -93,7 +93,7 @@ if(token){
    return <Navigate to="/"/>
 }
  return (
-   <Container pt="5rem" textAlign="center" margin="auto" maxW="container.md">
+   <Container  pt="5rem" textAlign="center" margin="auto" maxW="container.md">
        <Stack p="2rem">
            <Container> <Image margin="auto" width="10rem" src="https://static.wixstatic.com/media/0fd671_bee87a7dbc7640129e5477f5f4b84499~mv2.gif"/>
            <SlideFade in={isOpen} offsetY='20px'>
